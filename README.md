@@ -38,5 +38,15 @@ AgentK runs isolated in a docker container, so you need the latest docker instal
 
 1. Copy `.env.template` to `.env`
 2. Set environment variables in `.env`
+    - DEFAULT_MODEL_PROVIDER : OLLAMA-NATIVE or OLLAMA-OPENAI or OPENAI or ANTHROPIC
+    - OLLAMA_HOSTNAME : ex: `host.containers.internal` to reach ollama on the host with podman
+
 3. Build container with `podman build -t agentk .`
-3. Run `./agentk`
+3. Run `podman run -ti --name agentk --net=slirp4netns:allow_host_loopback=true agentk`
+
+podman run -ti --name agentk --net=host agentk
+
+# Useful commands
+- Restart an existing container: `podman start -ia agentk`
+- Attach a shell to a running container: `podman exec -ti agentk bash`
+- Remove a container: `podman rm agentk`
