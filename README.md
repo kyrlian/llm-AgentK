@@ -38,4 +38,5 @@ AgentK runs isolated in a docker container, so you need the latest docker instal
 
 1. Copy `.env.template` to `.env`
 2. Set environment variables in `.env`
+3. Build container with `podman build -t agentk .`
 3. Run `./agentk`
